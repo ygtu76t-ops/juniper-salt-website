@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Juniper & Salt is a modern neighborhood kitchen serving bright plates, late-night cocktails, and a warm welcome." />
+  <title>Juniper & Salt | A little wild, always delicious</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <style>
+    :root {
+      --ink: #162623;
+      --ink-soft: #29423d;
+      --cream: #f5f1e8;
+      --paper: #fbf9f4;
+      --saffron: #e3a72f;
+      --coral: #d8664a;
+      --mint: #b8d9c2;
+      --line: rgba(22, 38, 35, .16);
+      --serif: "Fraunces", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+      --shadow: 0 20px 60px rgba(22, 38, 35, .12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.6; overflow-x: hidden; }
+    body.no-scroll { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { color: inherit; font: inherit; }
+    button { cursor: pointer; }
+    img { display: block; max-width: 100%; }
+    .container { width: min(1180px, calc(100% - 48px)); margin: auto; }
+    .eyebrow { align-items: center; color: var(--coral); display: flex; font-size: .72rem; font-weight: 700; gap: 10px; letter-spacing: .16em; text-transform: uppercase; }
+    .eyebrow::before { background: var(--coral); content: ""; height: 2px; width: 30px; }
+    .section-title { font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4.8rem); font-weight: 600; letter-spacing: -.045em; line-height: .98; }
+    .section-title em { color: var(--coral); font-style: normal; }
+    .muted { color: rgba(22, 38, 35, .66); }
+    .btn { align-items: center; border: 1px solid transparent; display: inline-flex; font-size: .78rem; font-weight: 700; gap: 12px; justify-content: center; letter-spacing: .11em; min-height: 52px; padding: 0 23px; text-transform: uppercase; transition: .3s ease; }
+    .btn-dark { background: var(--ink); color: var(--cream); }
+    .btn-dark:hover { background: var(--coral); transform: translateY(-3px); }
+    .btn-light { border-color: rgba(245, 241, 232, .5); color: var(--cream); }
+    .btn-light:hover { background: var(--cream); color: var(--ink); transform: translateY(-3px); }
+    .btn-coral { background: var(--coral); color: white; }
+    .btn-coral:hover { background: var(--saffron); color: var(--ink); transform: translateY(-3px); }
+
+    /* Navigation */
+    .site-header { left: 0; position: fixed; right: 0; top: 0; z-index: 20; transition: .35s ease; }
+    .site-header.scrolled { background: rgba(245, 241, 232, .93); box-shadow: 0 8px 30px rgba(22,38,35,.09); backdrop-filter: blur(14px); }
+    .nav { align-items: center; display: flex; height: 86px; justify-content: space-between; transition: height .35s ease; }
+    .scrolled .nav { height: 70px; }
+    .brand { align-items: center; display: flex; font-family: var(--serif); font-size: 1.45rem; font-weight: 700; gap: 10px; letter-spacing: -.03em; }
+    .brand-mark { align-items: center; background: var(--saffron); border-radius: 50%; display: flex; font-family: var(--sans); font-size: .72rem; height: 31px; justify-content: center; transform: rotate(-12deg); width: 31px; }
+    .nav-links { align-items: center; display: flex; gap: 30px; list-style: none; }
+    .nav-links a { font-size: .75rem; font-weight: 700; letter-spacing: .09em; position: relative; text-transform: uppercase; }
+    .nav-links a::after { background: var(--coral); bottom: -7px; content: ""; height: 2px; left: 0; position: absolute; transform: scaleX(0); transform-origin: left; transition: transform .3s; width: 100%; }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-reserve { min-height: 42px; padding: 0 16px; }
+    .menu-toggle { background: none; border: 0; display: none; font-size: 1.3rem; }
+
+    /* Hero */
+    .hero { align-items: flex-end; background: linear-gradient(90deg, rgba(12,28,25,.86) 0%, rgba(12,28,25,.46) 46%, rgba(12,28,25,.1) 100%), url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=2000&q=88") center/cover; color: var(--cream); display: flex; min-height: 820px; padding: 160px 0 95px; position: relative; }
+    .hero::after { background: var(--saffron); bottom: 0; content: ""; height: 7px; left: 0; position: absolute; width: 22%; }
+    .hero-content { max-width: 730px; }
+    .hero .eyebrow { color: var(--saffron); }
+    .hero .eyebrow::before { background: var(--saffron); }
+    .hero h1 { font-family: var(--serif); font-size: clamp(4rem, 9vw, 8.5rem); font-weight: 600; letter-spacing: -.07em; line-height: .88; margin: 24px 0 29px; }
+    .hero h1 span { color: var(--saffron); display: block; font-style: italic; }
+    .hero-copy { color: rgba(245,241,232,.8); font-size: 1.06rem; max-width: 440px; }
+    .hero-actions { display: flex; gap: 12px; margin-top: 36px; }
+    .hero-note { align-items: center; bottom: 80px; display: flex; font-size: .72rem; gap: 10px; letter-spacing: .1em; position: absolute; right: 5%; text-transform: uppercase; transform: rotate(-90deg); transform-origin: right; }
+    .hero-note::before { background: var(--saffron); content: ""; height: 1px; width: 45px; }
+
+    /* Intro / About */
+    .intro { background: var(--cream); padding: 130px 0; }
+    .intro-grid { align-items: center; display: grid; gap: 90px; grid-template-columns: .9fr 1.1fr; }
+    .intro-copy { padding-left: 8%; }
+    .intro-copy .section-title { margin: 22px 0 26px; max-width: 500px; }
+    .intro-copy p { color: rgba(22,38,35,.7); max-width: 475px; }
+    .signature { color: var(--coral); font-family: var(--serif); font-size: 1.8rem; margin-top: 30px; transform: rotate(-5deg); }
+    .about-visual { position: relative; }
+    .about-visual img { height: 530px; object-fit: cover; width: 100%; }
+    .about-sticker { align-items: center; background: var(--saffron); border-radius: 50%; display: flex; font-size: .7rem; font-weight: 700; height: 116px; justify-content: center; letter-spacing: .12em; line-height: 1.2; position: absolute; right: -33px; text-align: center; text-transform: uppercase; top: 40px; transform: rotate(12deg); width: 116px; }
+    .stats { border-top: 1px solid var(--line); display: grid; gap: 25px; grid-template-columns: repeat(3,1fr); margin-top: 64px; padding-top: 22px; }
+    .stat-number { font-family: var(--serif); font-size: 3rem; letter-spacing: -.06em; }
+    .stat-label { color: rgba(22,38,35,.62); font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+
+    /* Menu */
+    .menu-section { background: var(--paper); padding: 125px 0 145px; }
+    .section-head { align-items: end; display: flex; justify-content: space-between; margin-bottom: 55px; }
+    .section-head > div:last-child { max-width: 320px; }
+    .tabs { border-bottom: 1px solid var(--line); display: flex; gap: 8px; margin-bottom: 38px; overflow-x: auto; }
+    .tab { background: none; border: 0; border-bottom: 3px solid transparent; color: rgba(22,38,35,.56); font-size: .76rem; font-weight: 700; letter-spacing: .1em; padding: 13px 24px 16px; text-transform: uppercase; transition: .25s; white-space: nowrap; }
+    .tab:hover, .tab.active { border-color: var(--coral); color: var(--ink); }
+    .menu-grid { display: grid; gap: 22px; grid-template-columns: repeat(4, 1fr); }
+    .dish-card { background: var(--cream); overflow: hidden; position: relative; transition: .35s ease; }
+    .dish-card:hover { box-shadow: var(--shadow); transform: translateY(-8px); }
+    .dish-image { height: 245px; overflow: hidden; position: relative; }
+    .dish-image img { height: 100%; object-fit: cover; transition: transform .6s ease; width: 100%; }
+    .dish-card:hover .dish-image img { transform: scale(1.08); }
+    .dish-tag { background: var(--saffron); font-size: .63rem; font-weight: 700; left: 12px; letter-spacing: .1em; padding: 5px 9px; position: absolute; text-transform: uppercase; top: 12px; }
+    .dish-info { padding: 20px 18px 22px; }
+    .dish-top { align-items: baseline; display: flex; gap: 10px; justify-content: space-between; }
+    .dish-name { font-family: var(--serif); font-size: 1.35rem; line-height: 1; }
+    .dish-price { color: var(--coral); font-weight: 700; white-space: nowrap; }
+    .dish-info p { color: rgba(22,38,35,.62); font-size: .82rem; margin-top: 10px; }
+    .menu-panel { display: none; }
+    .menu-panel.active { animation: rise .45s ease both; display: block; }
+
+    /* Reservation */
+    .reservation { background: var(--ink); color: var(--cream); overflow: hidden; padding: 120px 0; position: relative; }
+    .reservation::before { border: 1px solid rgba(184,217,194,.3); border-radius: 50%; content: ""; height: 500px; position: absolute; right: -180px; top: -190px; width: 500px; }
+    .reservation-grid { align-items: start; display: grid; gap: 90px; grid-template-columns: .7fr 1.3fr; position: relative; }
+    .reservation .eyebrow { color: var(--saffron); }
+    .reservation .eyebrow::before { background: var(--saffron); }
+    .reservation h2 { font-size: clamp(3rem, 5vw, 5.2rem); margin: 20px 0; }
+    .reservation-intro p { color: rgba(245,241,232,.65); max-width: 300px; }
+    .reservation-details { border-top: 1px solid rgba(245,241,232,.2); color: rgba(245,241,232,.7); font-size: .8rem; margin-top: 38px; padding-top: 17px; }
+    .booking-form { display: grid; gap: 23px; grid-template-columns: 1fr 1fr; }
+    .field { display: flex; flex-direction: column; gap: 8px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { color: var(--mint); font-size: .67rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    .field input, .field select, .field textarea { background: transparent; border: 0; border-bottom: 1px solid rgba(245,241,232,.35); border-radius: 0; color: var(--cream); outline: 0; padding: 8px 0 12px; transition: border .25s; width: 100%; }
+    .field select option { color: var(--ink); }
+    .field textarea { min-height: 65px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--saffron); }
+    .booking-form .btn { border: 0; grid-column: 1 / -1; justify-self: start; margin-top: 8px; }
+    .form-message { color: var(--mint); display: none; font-size: .82rem; grid-column: 1 / -1; }
+    .form-message.show { display: block; }
+
+    /* Testimonials */
+    .testimonials { background: var(--mint); padding: 130px 0; }
+    .testimonial-layout { align-items: end; display: grid; gap: 80px; grid-template-columns: .65fr 1.35fr; }
+    .testimonial-intro .section-title { margin-top: 20px; }
+    .slider { min-width: 0; overflow: hidden; }
+    .slides { display: flex; transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+    .slide { flex: 0 0 100%; }
+    .quote { font-family: var(--serif); font-size: clamp(1.9rem, 3.3vw, 3.1rem); letter-spacing: -.04em; line-height: 1.1; max-width: 700px; }
+    .quote::before { color: var(--coral); content: "\201C"; display: block; font-size: 5rem; height: 45px; line-height: 1; }
+    .reviewer { align-items: center; display: flex; gap: 12px; margin-top: 30px; }
+    .reviewer img { border-radius: 50%; height: 44px; object-fit: cover; width: 44px; }
+    .reviewer strong { display: block; font-size: .85rem; }
+    .reviewer span { color: rgba(22,38,35,.6); font-size: .72rem; }
+    .stars { color: var(--coral); font-size: .8rem; letter-spacing: 3px; margin-bottom: 6px; }
+    .slider-controls { display: flex; gap: 9px; margin-top: 42px; }
+    .slider-btn { align-items: center; background: transparent; border: 1px solid var(--ink); display: flex; height: 42px; justify-content: center; transition: .25s; width: 42px; }
+    .slider-btn:hover { background: var(--ink); color: var(--mint); }
+
+    /* Gallery */
+    .gallery { padding: 125px 0; }
+    .gallery-grid { display: grid; gap: 13px; grid-auto-rows: 210px; grid-template-columns: 1.15fr .85fr .85fr 1.15fr; margin-top: 50px; }
+    .gallery-item { cursor: zoom-in; overflow: hidden; position: relative; }
+    .gallery-item:first-child { grid-row: span 2; }
+    .gallery-item:nth-child(4) { grid-column: span 2; }
+    .gallery-item img { height: 100%; object-fit: cover; transition: transform .6s ease, filter .4s; width: 100%; }
+    .gallery-item:hover img { filter: saturate(1.2); transform: scale(1.07); }
+    .gallery-item::after { align-items: center; background: rgba(22,38,35,.5); color: white; content: "\f002"; display: flex; font-family: "Font Awesome 6 Free"; font-weight: 900; inset: 0; justify-content: center; opacity: 0; position: absolute; transition: opacity .3s; }
+    .gallery-item:hover::after { opacity: 1; }
+    .lightbox { align-items: center; background: rgba(9,18,16,.92); display: flex; inset: 0; justify-content: center; opacity: 0; padding: 40px; pointer-events: none; position: fixed; transition: opacity .3s; z-index: 40; }
+    .lightbox.open { opacity: 1; pointer-events: auto; }
+    .lightbox img { max-height: 86vh; max-width: min(1000px, 94vw); object-fit: contain; }
+    .lightbox-close { background: none; border: 0; color: white; font-size: 1.8rem; position: absolute; right: 28px; top: 22px; }
+
+    /* Contact / Footer */
+    .contact { background: var(--coral); color: white; padding: 115px 0 0; }
+    .contact-grid { display: grid; gap: 70px; grid-template-columns: .8fr 1.2fr; }
+    .contact .section-title { margin: 20px 0 36px; }
+    .contact .eyebrow { color: var(--ink); }
+    .contact .eyebrow::before { background: var(--ink); }
+    .contact-list { display: grid; gap: 16px; list-style: none; }
+    .contact-list li { align-items: start; display: flex; font-size: .9rem; gap: 14px; }
+    .contact-list i { color: var(--saffron); margin-top: 5px; width: 16px; }
+    .map { background: #d9d2bd; min-height: 360px; overflow: hidden; position: relative; }
+    .map::before { background: linear-gradient(130deg, transparent 35%, rgba(255,255,255,.56) 36% 39%, transparent 40% 62%, rgba(255,255,255,.5) 63% 66%, transparent 67%), repeating-linear-gradient(35deg, transparent 0 48px, rgba(22,38,35,.12) 49px 50px); content: ""; inset: 0; position: absolute; }
+    .map-pin { align-items: center; background: var(--ink); border: 6px solid var(--saffron); border-radius: 50%; color: var(--saffron); display: flex; height: 58px; justify-content: center; left: 50%; position: absolute; top: 49%; transform: translate(-50%,-50%); width: 58px; }
+    .map-label { background: var(--paper); color: var(--ink); font-size: .72rem; font-weight: 700; left: 50%; letter-spacing: .08em; padding: 9px 13px; position: absolute; top: calc(49% + 42px); transform: translateX(-50%); }
+    footer { background: var(--ink); color: var(--cream); margin-top: 105px; padding: 30px 0; }
+    .footer-row { align-items: center; display: flex; justify-content: space-between; }
+    .footer-copy { color: rgba(245,241,232,.52); font-size: .7rem; }
+    .socials { display: flex; gap: 17px; }
+    .socials a { color: var(--cream); transition: color .25s; }
+    .socials a:hover { color: var(--saffron); }
+    .quick-links { display: flex; font-size: .7rem; gap: 22px; letter-spacing: .08em; text-transform: uppercase; }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .75s ease, transform .75s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 900px) {
+      .nav-links { background: var(--paper); box-shadow: var(--shadow); display: none; flex-direction: column; gap: 25px; left: 24px; padding: 28px; position: absolute; right: 24px; top: 76px; }
+      .nav-links.open { display: flex; }
+      .menu-toggle { display: block; }
+      .nav-reserve { display: none; }
+      .hero { min-height: 720px; }
+      .intro-grid, .reservation-grid, .testimonial-layout, .contact-grid { gap: 50px; grid-template-columns: 1fr; }
+      .intro-copy { padding-left: 0; }
+      .about-visual img { height: 430px; }
+      .about-sticker { right: 20px; }
+      .menu-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonial-layout { align-items: start; }
+      .gallery-grid { grid-auto-rows: 180px; }
+      .map { min-height: 300px; }
+    }
+    @media (max-width: 580px) {
+      .container { width: min(100% - 34px, 1180px); }
+      .nav { height: 70px; }
+      .hero { min-height: 700px; padding-bottom: 72px; }
+      .hero h1 { font-size: clamp(3.5rem, 17vw, 6rem); }
+      .hero-actions { align-items: stretch; flex-direction: column; max-width: 210px; }
+      .hero-note { display: none; }
+      .intro, .menu-section, .gallery { padding: 86px 0; }
+      .section-head { align-items: start; flex-direction: column; gap: 24px; margin-bottom: 35px; }
+      .menu-grid { gap: 14px; grid-template-columns: 1fr 1fr; }
+      .dish-image { height: 165px; }
+      .dish-info { padding: 15px 12px 18px; }
+      .dish-name { font-size: 1.08rem; }
+      .dish-price { font-size: .82rem; }
+      .dish-info p { font-size: .74rem; }
+      .reservation, .testimonials, .contact { padding-top: 86px; }
+      .booking-form { gap: 18px; grid-template-columns: 1fr; }
+      .field.full, .booking-form .btn, .form-message { grid-column: auto; }
+      .gallery-grid { grid-auto-rows: 135px; grid-template-columns: 1fr 1fr; }
+      .gallery-item:first-child { grid-row: span 2; }
+      .gallery-item:nth-child(4) { grid-column: span 2; }
+      .footer-row { align-items: start; flex-direction: column; gap: 20px; }
+      .quick-links { order: -1; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Juniper and Salt home"><span class="brand-mark">J&S</span> Juniper & Salt</a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home">Home</a></li><li><a href="#menu">Menu</a></li><li><a href="#about">About</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="btn btn-coral nav-reserve" href="#reserve">Reserve a Table <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content reveal">
+        <div class="eyebrow">Neighborhood kitchen · Est. 2014</div>
+        <h1>A little wild.<span>Always delicious.</span></h1>
+        <p class="hero-copy">Bright plates, thoughtful pours, and the kind of room where one more round always feels like the right call.</p>
+        <div class="hero-actions"><a class="btn btn-coral" href="#menu">View the menu <i class="fa-solid fa-arrow-right"></i></a><a class="btn btn-light" href="#reserve">Book a table</a></div>
+      </div>
+      <div class="hero-note">Come hungry · Leave glowing</div>
+    </section>
+
+    <section class="intro" id="about">
+      <div class="container intro-grid">
+        <div class="intro-copy reveal"><div class="eyebrow">Our story</div><h2 class="section-title">Good food has a <em>point of view.</em></h2><p>Juniper & Salt started with a tiny kitchen, a big appetite, and a belief that the best nights are a little unplanned. We make seasonal food with a bright, fearless edge, sourcing from people we know and cooking for people we hope to know.</p><div class="signature">See you around the table.</div></div>
+        <div class="about-visual reveal"><img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1000&q=85" alt="Warmly lit Juniper and Salt dining room" /><div class="about-sticker">Made<br />with<br />intent</div></div>
+      </div>
+      <div class="container stats reveal"><div><div class="stat-number" data-count="10">0</div><div class="stat-label">Years of gathering</div></div><div><div class="stat-number" data-count="42">0</div><div class="stat-label">Plates on rotation</div></div><div><div class="stat-number" data-count="18">0</div><div class="stat-label">Thousand happy guests</div></div></div>
+    </section>
+
+    <section class="menu-section" id="menu">
+      <div class="container"><div class="section-head reveal"><div><div class="eyebrow">What's cooking</div><h2 class="section-title">Small plates.<br /><em>Big energy.</em></h2></div><p class="muted">A menu that follows the seasons, with enough familiar to feel like home and enough strange to keep things interesting.</p></div>
+        <div class="tabs reveal" role="tablist"><button class="tab active" data-tab="starters">Starters</button><button class="tab" data-tab="mains">Main courses</button><button class="tab" data-tab="desserts">Desserts</button><button class="tab" data-tab="drinks">Drinks</button></div>
+        <div class="menu-panel active" id="starters"><div class="menu-grid"><article class="dish-card"><div class="dish-image"><img src="https://images.unsplash.com/photo-1541014741259-de529411b96a?auto=format&fit=crop&w=700&q=80" alt="Charred sourdough with whipped butter" /><span class="dish-tag">Crowd favorite</span></div><div class="dish-info"><div class="dish-top"><h3 class="dish-name">Charred sourdough</h3><span class="dish-price">$9</span></div><p>Whipped brown butter, smoked sea salt, pickled shallot.</p></div></article><article class="dish-card"><div class="dish-image"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=80" alt="Colorful market vegetable salad" /></div><div class="dish-info"><div class="dish-top"><h3 class="dish-name">Market crunch</h3><span class="dish-price">$14</span></div><p>Baby greens, herbs, seeds, lemon tahini dressing.</p></div></article><article class="dish-card"><div class="dish-image"><img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=700&q=80" alt="Golden vegetable dumplings" /></div><div class="dish-info"><div class="dish-top"><h3 class="dish-name">Golden dumplings</h3><span class="dish-price">$15</span></div><p>Roasted squash, chili crisp, cool mint yogurt.</p></div></article><article class="dish-card"><div class="dish-image"><img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&w=700&q=80" alt="Pasta with fresh herbs" /></div><div class="dish-info"><div class="dish-top"><h3 class="dish-name">Green spaghetti</h3><span class="dish-price">$16</span></div><p>Parsley pesto, fried capers, aged pecorino.</p></div></article></div></div>
+        <div class="menu-panel" id="mains"><div class="menu-grid"><article class="dish-card"><div class="dish-image"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80" alt="Juicy steak with vegetables" /><span class="dish-tag">Signature</span></div><div class="dish-info"><div class="dish-top"><h3 class="dish-name">Coal-kissed steak</h3><span class="dish-price">$32</span></div><p>Hanger steak, green peppercorn relish, fries.</p></div></article><article class="dish-card"><div class="dish-image"><img src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=700&q=80" alt="Roasted chicken with herbs" /></div><div class="dish-info"><div class="dish-top"><h3 class="dish-name">Sunday chicken</h3><span class="dish-price">$26</span></div><p>Half roast bird, soft herbs, crisp potatoes, jus.</p></div></article><article class="dish-card"><div class="dish-image"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=700&q=80" alt="Fresh vegetable bowl" /></div><div class="dish-info"><div class="dish-top"><h3 class="dish-name">Garden bowl</h3><span class="dish-price">$22</span></div><p>Freekeh, charred greens, avocado, green goddess.</p></div></article><article class="dish-card"><div class="dish-image"><img src="https://images.unsplash.com/photo-1516685018646-549198525c1b?auto=format&fit=crop&w=700&q=80" alt="Crispy fish with lemon" /></div><div class="dish-info"><div class="dish-top"><h3 class="dish-name">Crispy catch</h3><span class="dish-price">$28</span></div><p>Daily fish, lemon, fennel, saffron aioli.</p></div></article></div></div>
+        <div class="menu-panel" id="desserts"><div class="menu-grid"><article class="dish-card"><div class="dish-image"><img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=700&q=80" alt="Glazed strawberry doughnut" /></div><div class="dish-info"><div class="dish-top"><h3 class="dish-name">Jam doughnut</h3><span class="dish-price">$10</span></div><p>Warm brioche, strawberry jam, vanilla sugar.</p></div></article><article class="dish-card"><div class="dish-image"><img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=700&q=80" alt="Slice of elegant berry cake" /></div><div class="dish-info"><div class="dish-top"><h3 class="dish-name">Berry cloud</h3><span class="dish-price">$12</span></div><p>Olive oil cake, cultured cream, late berries.</p></div></article><article class="dish-card"><div class="dish-image"><img src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=700&q=80" alt="Chocolate ice cream with nuts" /></div><div class="dish-info"><div class="dish-top"><h3 class="dish-name">Dark milk</h3><span class="dish-price">$11</span></div><p>Chocolate custard, malt, sea salt, olive oil.</p></div></article><article class="dish-card"><div class="dish-image"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=700&q=80" alt="Yogurt parfait with fruit" /></div><div class="dish-info"><div class="dish-top"><h3 class="dish-name">Morning parfait</h3><span class="dish-price">$9</span></div><p>Thick yogurt, honeycomb, citrus, toasted oats.</p></div></article></div></div>
+        <div class="menu-panel" id="drinks"><div class="menu-grid"><article class="dish-card"><div class="dish-image"><img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=700&q=80" alt="Citrus cocktail with herbs" /><span class="dish-tag">New</span></div><div class="dish-info"><div class="dish-top"><h3 class="dish-name">Green light</h3><span class="dish-price">$14</span></div><p>Gin, cucumber, basil, lime, a little fizz.</p></div></article><article class="dish-card"><div class="dish-image"><img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=700&q=80" alt="Iced coffee in a glass" /></div><div class="dish-info"><div class="dish-top"><h3 class="dish-name">Salted cold brew</h3><span class="dish-price">$7</span></div><p>House cold brew, salted maple, oat milk.</p></div></article><article class="dish-card"><div class="dish-image"><img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=700&q=80" alt="Bright orange cocktail" /></div><div class="dish-info"><div class="dish-top"><h3 class="dish-name">Soft focus</h3><span class="dish-price">$15</span></div><p>Tequila, blood orange, hibiscus, lime.</p></div></article><article class="dish-card"><div class="dish-image"><img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?auto=format&fit=crop&w=700&q=80" alt="Refreshing sparkling drink" /></div><div class="dish-info"><div class="dish-top"><h3 class="dish-name">Juniper spritz</h3><span class="dish-price">$13</span></div><p>Juniper cordial, dry vermouth, tonic, grapefruit.</p></div></article></div></div>
+      </div>
+    </section>
+
+    <section class="reservation" id="reserve"><div class="container reservation-grid"><div class="reservation-intro reveal"><div class="eyebrow">Your table is waiting</div><h2 class="section-title">Make a night<br />of it.</h2><p>Bring your favorite people. We will handle the rest, including the good playlist.</p><div class="reservation-details">Open Tuesday–Sunday<br />5pm until late</div></div><form class="booking-form reveal" id="booking-form"><div class="field"><label for="name">Your name</label><input id="name" type="text" placeholder="Alex Morgan" required /></div><div class="field"><label for="phone">Phone number</label><input id="phone" type="tel" placeholder="(212) 555-0194" required /></div><div class="field"><label for="date">Date</label><input id="date" type="date" required /></div><div class="field"><label for="time">Time</label><select id="time" required><option value="">Choose a time</option><option>5:00 pm</option><option>6:30 pm</option><option>8:00 pm</option><option>9:30 pm</option></select></div><div class="field"><label for="guests">Number of guests</label><select id="guests" required><option value="">Select guests</option><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5+ guests</option></select></div><div class="field"><label for="notes">Notes</label><input id="notes" type="text" placeholder="Birthday, allergies, window seat..." /></div><button class="btn btn-coral" type="submit">Request a reservation <i class="fa-solid fa-arrow-right"></i></button><p class="form-message" id="form-message">Thanks, your request is in. We will be in touch shortly.</p></form></div></section>
+
+    <section class="testimonials" id="reviews"><div class="container testimonial-layout"><div class="testimonial-intro reveal"><div class="eyebrow">The good word</div><h2 class="section-title">People are<br /><em>talking.</em></h2></div><div class="slider reveal"><div class="slides" id="slides"><article class="slide"><div class="quote">The kind of meal that makes you cancel your next plan so you can stay for dessert.</div><div class="reviewer"><img src="https://i.pravatar.cc/100?img=47" alt="Portrait of Maya Lee" /><div><div class="stars">★★★★★</div><strong>Maya Lee</strong><span>Local guide</span></div></div></article><article class="slide"><div class="quote">Every plate had a little surprise hiding in it. The room is gorgeous, but the welcome is what stayed with us.</div><div class="reviewer"><img src="https://i.pravatar.cc/100?img=12" alt="Portrait of Daniel Reed" /><div><div class="stars">★★★★★</div><strong>Daniel Reed</strong><span>Regular guest</span></div></div></article><article class="slide"><div class="quote">Come for the green spaghetti. Stay because suddenly it is midnight and nobody wants to leave.</div><div class="reviewer"><img src="https://i.pravatar.cc/100?img=32" alt="Portrait of Priya Shah" /><div><div class="stars">★★★★★</div><strong>Priya Shah</strong><span>Food writer</span></div></div></article></div><div class="slider-controls"><button class="slider-btn" id="prev-slide" aria-label="Previous review"><i class="fa-solid fa-arrow-left"></i></button><button class="slider-btn" id="next-slide" aria-label="Next review"><i class="fa-solid fa-arrow-right"></i></button></div></div></div></section>
+
+    <section class="gallery"><div class="container"><div class="section-head reveal"><div><div class="eyebrow">A seat at the table</div><h2 class="section-title">Come see<br /><em>for yourself.</em></h2></div><p class="muted">A room made for long lunches, last drinks, and everything in between.</p></div><div class="gallery-grid reveal"><div class="gallery-item"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=85" alt="Juniper and Salt dining room" /></div><div class="gallery-item"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=85" alt="Cocktail at the bar" /></div><div class="gallery-item"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=85" alt="Beautifully set restaurant table" /></div><div class="gallery-item"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1100&q=85" alt="Colorful dishes on a table" /></div><div class="gallery-item"><img src="https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=800&q=85" alt="Friends sharing a meal" /></div></div></div></section>
+
+    <section class="contact" id="contact"><div class="container contact-grid"><div class="contact-copy reveal"><div class="eyebrow">Find us</div><h2 class="section-title">Right in the<br /><em>heart of it.</em></h2><ul class="contact-list"><li><i class="fa-solid fa-location-dot"></i><span>47 Mercer Street<br />New York, NY 10013</span></li><li><i class="fa-solid fa-phone"></i><span>+1 212 555 0188</span></li><li><i class="fa-solid fa-envelope"></i><span>hello@juniperandsalt.com</span></li><li><i class="fa-regular fa-clock"></i><span>Tue–Thu 5–10pm · Fri–Sat 5–11pm<br />Sun 4–9pm · Closed Monday</span></li></ul></div><div class="map reveal"><div class="map-pin"><i class="fa-solid fa-utensils"></i></div><div class="map-label">JUNIPER & SALT</div></div></div><footer><div class="container footer-row"><div class="footer-copy">© 2024 Juniper & Salt. Made for good company.</div><div class="quick-links"><a href="#menu">Menu</a><a href="#reserve">Reservations</a><a href="#contact">Contact</a></div><div class="socials"><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a></div></div></footer></section>
+  </main>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Expanded gallery image"><button class="lightbox-close" id="lightbox-close" aria-label="Close image"><i class="fa-solid fa-xmark"></i></button><img id="lightbox-image" src="" alt="" /></div>
+  <script>
+    const header = document.getElementById('site-header');
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 30));
+    menuToggle.addEventListener('click', () => { const open = navLinks.classList.toggle('open'); menuToggle.setAttribute('aria-expanded', open); menuToggle.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>'; });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { navLinks.classList.remove('open'); menuToggle.setAttribute('aria-expanded', 'false'); menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>'; }));
+
+    document.querySelectorAll('.tab').forEach(tab => tab.addEventListener('click', () => { document.querySelectorAll('.tab').forEach(item => item.classList.remove('active')); document.querySelectorAll('.menu-panel').forEach(panel => panel.classList.remove('active')); tab.classList.add('active'); document.getElementById(tab.dataset.tab).classList.add('active'); }));
+
+    const observer = new IntersectionObserver((entries) => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }), { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+    document.querySelectorAll('[data-count]').forEach(counter => { const target = Number(counter.dataset.count); const countObserver = new IntersectionObserver(entries => { if (entries[0].isIntersecting) { let current = 0; const tick = () => { current += Math.ceil(target / 35); if (current >= target) { counter.textContent = target + '+'; return; } counter.textContent = current; requestAnimationFrame(tick); }; tick(); countObserver.disconnect(); } }, { threshold: .6 }); countObserver.observe(counter); });
+
+    const slides = document.getElementById('slides'); let slideIndex = 0;
+    const showSlide = index => { slideIndex = (index + 3) % 3; slides.style.transform = `translateX(-${slideIndex * 100}%)`; };
+    document.getElementById('prev-slide').addEventListener('click', () => showSlide(slideIndex - 1));
+    document.getElementById('next-slide').addEventListener('click', () => showSlide(slideIndex + 1));
+    setInterval(() => showSlide(slideIndex + 1), 6500);
+
+    const lightbox = document.getElementById('lightbox'); const lightboxImage = document.getElementById('lightbox-image');
+    document.querySelectorAll('.gallery-item').forEach(item => item.addEventListener('click', () => { const image = item.querySelector('img'); lightboxImage.src = image.src; lightboxImage.alt = image.alt; lightbox.classList.add('open'); document.body.classList.add('no-scroll'); }));
+    const closeLightbox = () => { lightbox.classList.remove('open'); document.body.classList.remove('no-scroll'); };
+    document.getElementById('lightbox-close').addEventListener('click', closeLightbox); lightbox.addEventListener('click', event => { if (event.target === lightbox) closeLightbox(); }); document.addEventListener('keydown', event => { if (event.key === 'Escape') closeLightbox(); });
+
+    const dateInput = document.getElementById('date'); dateInput.min = new Date().toISOString().split('T')[0];
+    document.getElementById('booking-form').addEventListener('submit', event => { event.preventDefault(); document.getElementById('form-message').classList.add('show'); event.target.querySelector('button').innerHTML = 'Request received <i class="fa-solid fa-check"></i>'; });
+  </script>
+</body>
+</html>
